@@ -61,12 +61,6 @@ file '/etc/shibboleth/sp-key.pem' do
   mode '0644'
 end
 
-remote_file '/etc/shibboleth/idp-metadata.xml' do
-  source "#{node['shibboleth']['idp']}/idp/profile/Metadata/SAML"
-  mode '0644'
-  notifies :restart, 'service[shibd]'
-end
-
 template '/etc/shibboleth/shibboleth2.xml' do
   source 'shibboleth2.xml.erb'
   mode '0644'
